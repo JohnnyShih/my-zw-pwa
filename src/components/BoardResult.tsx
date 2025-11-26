@@ -60,7 +60,17 @@ const BoardResult: React.FC = () => {
       <div>
         <label>
           性別：
-          <select value={gender} onChange={e => setGender(e.target.value as Gender)}>
+          <select
+            value={gender ?? Gender.F}
+            onChange={e => {
+              const genderOptionMap: Record<string, Gender> = {
+                [Gender.F]: Gender.F,
+                [Gender.M]: Gender.M,
+              };
+              const selectedGender = genderOptionMap[e.target.value] ?? Gender.F;
+              setGender(selectedGender);
+            }}
+          >
             <option value={Gender.F}>女</option>
             <option value={Gender.M}>男</option>
           </select>
