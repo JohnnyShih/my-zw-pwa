@@ -34,6 +34,10 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,png,svg}']
       }
     })
-  ]
+  ],
+  test: {
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts'
+  }
 });
 
